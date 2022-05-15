@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemTraitsTable extends Migration
+class CreateRuneTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateItemTraitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_traits', function (Blueprint $table) {
+        Schema::create('rune_types', function (Blueprint $table) {
             $table->id();
+            $table->tinyText('name');
             $table->timestamps();
             $table->softDeletes();
+            $table->bigInteger('created_by');
+            $table->bigInteger('updated_by')->unsigned()->nullable()->default(null);
+            $table->bigInteger('deleted_by')->unsigned()->nullable()->default(null);
         });
     }
 
@@ -27,6 +31,6 @@ class CreateItemTraitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_traits');
+        Schema::dropIfExists('rune_types');
     }
 }

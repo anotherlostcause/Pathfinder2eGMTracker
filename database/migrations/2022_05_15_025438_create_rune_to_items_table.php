@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemsTable extends Migration
+class CreateRuneToItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('rune_to_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->bigInteger('price')->unsigned()->nullable()->comment('Price in Copper Pieces')->default(null);
-            $table->smallInteger('item_level')->unsigned()->default(0);
+            $table->bigInteger('rune_id');
+            $table->bigInteger('item_id');
             $table->timestamps();
             $table->softDeletes();
             $table->bigInteger('created_by')->unsigned();
@@ -33,6 +32,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('rune_to_items');
     }
 }

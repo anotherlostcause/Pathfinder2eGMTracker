@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemsTable extends Migration
+class CreateTraitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('traits', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->bigInteger('price')->unsigned()->nullable()->comment('Price in Copper Pieces')->default(null);
-            $table->smallInteger('item_level')->unsigned()->default(0);
-            $table->timestamps();
+            $table->tinyText('name');
+            $table->bigInteger('trait_type_id')->unsigned();
             $table->softDeletes();
             $table->bigInteger('created_by')->unsigned();
             $table->bigInteger('updated_by')->unsigned()->nullable()->default(null);
@@ -33,6 +31,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('traits');
     }
 }

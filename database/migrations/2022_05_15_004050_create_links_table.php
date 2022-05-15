@@ -15,8 +15,13 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
+            $table->tinyText('url');
+            $table->bigInteger('link_type_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
+            $table->bigInteger('created_by')->unsigned();
+            $table->bigInteger('updated_by')->unsigned()->nullable()->default(null);
+            $table->bigInteger('deleted_by')->unsigned()->nullable()->default(null);
         });
     }
 

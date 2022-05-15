@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTraitToItemsTable extends Migration
+class CreateTraitToTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateTraitToItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('trait_to_items', function (Blueprint $table) {
+        Schema::create('trait_to', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('trait_id');
+            $table->morphs('trait_to');
             $table->timestamps();
             $table->softDeletes();
+            $table->bigInteger('created_by')->unsigned();
+            $table->bigInteger('updated_by')->unsigned()->nullable()->default(null);
+            $table->bigInteger('deleted_by')->unsigned()->nullable()->default(null);
         });
     }
 
@@ -27,6 +32,6 @@ class CreateTraitToItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trait_to_items');
+        Schema::dropIfExists('trait_to');
     }
 }

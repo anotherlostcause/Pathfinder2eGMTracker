@@ -15,6 +15,16 @@ class CreateItemAdventuresTable extends Migration
     {
         Schema::create('item_adventures', function (Blueprint $table) {
             $table->id();
+            $table->integer('quantity')->unsigned();
+            $table->text('appearance');
+            $table->text('notes');
+            $table->tinytext('adventure_path');
+            $table->tinytext('adventure');
+            $table->tinytext('chapter');
+            $table->boolean('found')->default(false);
+            $table->boolean('identified')->default(false);
+            $table->boolean('priced')->default(false);
+            $table->bigInteger('owner')->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });
