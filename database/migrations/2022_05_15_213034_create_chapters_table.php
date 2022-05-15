@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTraitsTable extends Migration
+class CreateChaptersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTraitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('traits', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->id();
             $table->tinyText('name');
-            $table->bigInteger('trait_type_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->bigInteger('created_by')->unsigned();
+            $table->bigInteger('created_by');
             $table->bigInteger('updated_by')->unsigned()->nullable()->default(null);
             $table->bigInteger('deleted_by')->unsigned()->nullable()->default(null);
         });
@@ -32,6 +31,6 @@ class CreateTraitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('traits');
+        Schema::dropIfExists('chapters');
     }
 }

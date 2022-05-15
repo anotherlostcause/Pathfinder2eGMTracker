@@ -15,12 +15,13 @@ class CreateItemAdventuresTable extends Migration
     {
         Schema::create('item_adventures', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('item_id')->unsigned();
             $table->integer('quantity')->unsigned();
-            $table->text('appearance');
-            $table->text('notes');
-            $table->tinytext('adventure_path');
-            $table->tinytext('adventure');
-            $table->tinytext('chapter');
+            $table->text('appearance')->nullable();
+            $table->text('notes')->nullable();
+            $table->bigInteger('adventure_path_id');
+            $table->bigInteger('adventure_id');
+            $table->bigInteger('chapter_id');
             $table->boolean('found')->default(false);
             $table->boolean('identified')->default(false);
             $table->boolean('priced')->default(false);

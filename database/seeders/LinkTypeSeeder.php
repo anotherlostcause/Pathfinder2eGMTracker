@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
 
-class LinkeTypeSeeder extends Seeder
+class LinkTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.

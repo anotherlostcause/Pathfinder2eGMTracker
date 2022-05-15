@@ -10,4 +10,6 @@ class TraitTo extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $table = 'trait_to';
 }
